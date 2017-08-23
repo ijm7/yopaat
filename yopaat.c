@@ -1,5 +1,4 @@
 #include "yopaat.h"
-#include <stdbool.h>
 
 static struct argp argp = { options, parse_opt, args_doc, doc, 0, 0, 0 };
 
@@ -27,4 +26,16 @@ static error_t parse_opt(int key, char *arg, struct argp_state *state)
         default: return ARGP_ERR_UNKNOWN;
     }
     return 0;
+}
+
+int validate_args(struct arguments *arguments)
+{
+    return 0;
+}
+
+FILE* open_file(char* file_arg)
+{
+    FILE *file;
+    file = fopen(file_arg, "a+");
+    return file;
 }

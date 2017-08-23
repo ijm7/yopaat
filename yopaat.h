@@ -1,10 +1,13 @@
 #ifndef PARSER_H
 #define PARSER_H
+#define	ERR_PARAMETER_NULL (-1)
 
 #include <stdbool.h>
 #include <argp.h>
+#include <stdio.h>
 
-const char *argp_program_version = "yopaat 0.1.1-a";
+
+const char *argp_program_version = "yopaat 0.1.2-a";
 const char *argp_program_bug_address = "<https://github.com/ijm7/yopaat/issues>";
 static char doc[] = "Tool for parsing inline HTML styles into CSS classes.";
 static char args_doc[] = "[INPUT] [OUTPUT]";
@@ -21,5 +24,7 @@ struct arguments
 
 int main(int argc, char* argv[]);
 static error_t parse_opt(int key, char *arg, struct argp_state *state);
+int validate_args(struct arguments *arguments);
+FILE* open_file(char* file_arg);
 
 #endif
