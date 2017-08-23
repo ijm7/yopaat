@@ -5,7 +5,7 @@
 #include <argp.h>
 
 const char *argp_program_version = "yopaat 0.1.1-a";
-const char *argp_program_bug_address = "<https://github.com/ijm7/inline-style-parser/issues>";
+const char *argp_program_bug_address = "<https://github.com/ijm7/yopaat/issues>";
 static char doc[] = "Tool for parsing inline HTML styles into CSS classes.";
 static char args_doc[] = "[INPUT] [OUTPUT]";
 static struct argp_option options[] =
