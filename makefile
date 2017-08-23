@@ -1,4 +1,4 @@
-TARGET = prog
+TARGET = yopaat
 LIBS = -lm
 CC = gcc
 CFLAGS = -g -Wall
