@@ -1,6 +1,6 @@
 #ifndef PARSER_H
 #define PARSER_H
-#define	ERR_PARAMETER_NULL (-1)
+#define	ERR_NULL (-1)
 
 #include <stdbool.h>
 #include <argp.h>
@@ -25,6 +25,8 @@ struct arguments
 int main(int argc, char* argv[]);
 static error_t parse_opt(int key, char *arg, struct argp_state *state);
 int validate_args(struct arguments *arguments);
-FILE* open_file(char* file_arg);
+FILE* open_file(char* file_dir);
+int close_file(FILE* file);
+
 
 #endif

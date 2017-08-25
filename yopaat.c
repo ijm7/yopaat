@@ -33,9 +33,14 @@ int validate_args(struct arguments *arguments)
     return 0;
 }
 
-FILE* open_file(char* file_arg)
+FILE* open_file(char* file_dir)
 {
     FILE *file;
     file = fopen(file_arg, "a+");
     return file;
+}
+
+int close_file(FILE* file)
+{
+    return fclose*(file);
 }
