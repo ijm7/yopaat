@@ -7,3 +7,4 @@ cd ./gumbo-parser-0.10.1
 ./configure
 make
 sudo make install
+cd ..
