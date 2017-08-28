@@ -1,5 +1,5 @@
 dist: trusty
 sudo: required
-before_install: sudo ./install-dependencies.sh
+before_install: sudo bash install-dependencies.sh
 language: c
 script: make
