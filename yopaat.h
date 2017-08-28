@@ -5,6 +5,7 @@
 #include <stdbool.h>
 #include <argp.h>
 #include <stdio.h>
+#include <gumbo.h>
 
 
 const char *argp_program_version = "yopaat 0.1.3-a";

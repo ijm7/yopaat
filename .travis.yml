@@ -1,2 +1,3 @@
+before_install: ./install-dependencies.sh
 language: c
 script: make
