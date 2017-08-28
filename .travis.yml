@@ -1,3 +1,5 @@
+dist: trusty
+sudo: required
 before_install: ./install-dependencies.sh
 language: c
 script: make
