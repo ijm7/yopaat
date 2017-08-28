@@ -1,7 +1,7 @@
 TARGET = yopaat
-LIBS = -lm
+LIBS = -lm -lgumbo
 CC = gcc
-CFLAGS = -g -Wall
+CFLAGS = -g -Wall -L/usr/local/lib
 
 .PHONY: default all clean
 
