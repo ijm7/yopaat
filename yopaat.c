@@ -6,6 +6,7 @@ int main(int argc, char* argv[])
 {
     struct arguments arguments;
     argp_parse(&argp, argc, argv, 0, 0, &arguments);
+    analyse_css(arguments.args[0]);
     //printf ("ARG1 = %s\nARG2 = %s\n", arguments.args[0], arguments.args[1]);
     return 0;
 }
@@ -26,6 +27,7 @@ static error_t parse_opt(int key, char *arg, struct argp_state *state)
         default: return ARGP_ERR_UNKNOWN;
     }
     return 0;
+
 }
 
 int validate_args(struct arguments *arguments)
@@ -33,7 +35,7 @@ int validate_args(struct arguments *arguments)
     return 0;
 }
 
-FILE* open_file(char* file_dir)
+FILE* open_file(char *file_dir)
 {
     FILE *file;
     file = fopen(file_dir, "a+");
@@ -43,4 +45,40 @@ FILE* open_file(char* file_dir)
 int close_file(FILE* file)
 {
     return fclose(file);
+}
+
+int analyse_css(char *file_dir)
+{
+    // Check if the file is of type CSS.
+    if (strlen(file_dir) < 5 || strcmp(&(file_dir[strlen(file_dir) - 4]), ".css") != 0)
+    {
+        printf("Bad file, does not contain CSS\n");
+        return ERR_INCORRECT_FILE;
+    }
+    else
+    {
+        printf("CSS file found!\n");
+        printf("Analysing...\n");
+    }
+    FILE* css_file = open_file(file_dir);
+    typedef struct element
+    {
+        char* name;
+        LIST_ENTRY(element) pointer;
+    } element;
+    typedef struct id
+    {
+        char* name;
+        LIST_ENTRY(id) pointer;
+    } id;
+    typedef struct class
+    {
+        char* name;
+        LIST_ENTRY(class) pointer;
+    } class;
+    return 0;
+
+
+
+
 }
