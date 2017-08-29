@@ -1,7 +1,7 @@
 TARGET = yopaat
-LIBS = -lm -lgumbo
+LIBS = -lm -lgumbo -lglib-2.0
 CC = gcc
-CFLAGS = -g -Wall -L/usr/local/lib
+CFLAGS = -g -Wall -L/usr/local/lib -L/usr/lib -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include
 
 .PHONY: default all clean
 
