@@ -2,12 +2,14 @@
 #define PARSER_H
 #define	ERR_NULL (-1)
 #define ERR_INCORRECT_FILE (-2)
+#define ERR_NO_FILE (-3)
 
 #include <stdbool.h>
 #include <argp.h>
 #include <stdio.h>
 #include <gumbo.h>
 #include <string.h>
+#include <stdlib.h>
 #include <sys/queue.h>
 
 const char *argp_program_version = "yopaat 0.1.4-a";
@@ -25,12 +27,33 @@ struct arguments
     char *args[2];
 };
 
+typedef struct element
+{
+    char *name;
+    LIST_ENTRY(element) pointer;
+    char *styles[];
+} element;
+typedef struct id
+{
+    char *name;
+    LIST_ENTRY(id) pointer;
+    char *styles[];
+} id;
+typedef struct class
+{
+    char *name;
+    LIST_ENTRY(class) pointer;
+    char *styles[];
+} class;
+enum { SELECTOR, DECLARATION } css_section;
+
 int main(int argc, char* argv[]);
 static error_t parse_opt(int key, char *arg, struct argp_state *state);
 int validate_args(struct arguments *arguments);
 FILE* open_file(char *file_dir);
 int close_file(FILE *file);
 int analyse_css(char *file_dir);
+char* read_file(FILE *file);
 
 
 #endif

@@ -42,7 +42,7 @@ FILE* open_file(char *file_dir)
     return file;
 }
 
-int close_file(FILE* file)
+int close_file(FILE *file)
 {
     return fclose(file);
 }
@@ -60,25 +60,46 @@ int analyse_css(char *file_dir)
         printf("CSS file found!\n");
         printf("Analysing...\n");
     }
+
     FILE* css_file = open_file(file_dir);
-    typedef struct element
+    read_file(css_file);
+
+    /*int c;
+    css_section = SELECTOR;
+    if (css_file)
     {
-        char* name;
-        LIST_ENTRY(element) pointer;
-    } element;
-    typedef struct id
-    {
-        char* name;
-        LIST_ENTRY(id) pointer;
-    } id;
-    typedef struct class
-    {
-        char* name;
-        LIST_ENTRY(class) pointer;
-    } class;
+        while ((c = getc(css_file)) != EOF)
+        {
+            switch (css_section)
+            {
+                case SELECTOR:
+                printf("BRACKET FOUND");
+                break;
+                case DECLARATION:
+                break;
+            }
+            putchar(c);
+        }
+        fclose(css_file);
+    }*/
     return 0;
+}
 
-
-
-
+char* read_file(FILE *file)
+{
+    long c;
+    fseek(file, 0, SEEK_END);
+    int inputsize = ftell(file);
+    char* input = malloc(inputsize);
+    fseek(file, 0, SEEK_SET);
+    if (file)
+    {
+        while ((c = getc(file)) != EOF)
+        {
+            strcat(input, (char*)c);
+            printf("%s", input);
+        }
+        fclose(file);
+    }
+    return input;
 }
