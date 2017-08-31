@@ -53,7 +53,7 @@ int validate_args(struct arguments *arguments);
 FILE* open_file(char *file_dir);
 int close_file(FILE *file);
 int analyse_css(char *file_dir);
-char* read_file(FILE *file);
+char* read_file(FILE *file, char *input);
 
 
 #endif

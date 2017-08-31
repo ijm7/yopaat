@@ -62,8 +62,8 @@ int analyse_css(char *file_dir)
     }
 
     FILE* css_file = open_file(file_dir);
-    read_file(css_file);
-
+    char input[1000];
+    read_file(css_file, input);
     /*int c;
     css_section = SELECTOR;
     if (css_file)
@@ -85,18 +85,17 @@ int analyse_css(char *file_dir)
     return 0;
 }
 
-char* read_file(FILE *file)
+char* read_file(FILE *file, char* input)
 {
     long c;
     fseek(file, 0, SEEK_END);
     int inputsize = ftell(file);
-    char* input = malloc(inputsize);
     fseek(file, 0, SEEK_SET);
     if (file)
     {
         while ((c = getc(file)) != EOF)
         {
-            strcat(input, (char*)c);
+            strncat(input, (char*)c, 1000);
             printf("%s", input);
         }
         fclose(file);
