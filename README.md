@@ -5,6 +5,7 @@
 Run the following commands to clone the repository and build the program:    
 ```  
 git clone https://github.com/ijm7/yopaat.git  
+sudo bash install-dependencies.sh
 make  
 ```  
 To clean the build:  
