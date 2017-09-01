@@ -69,13 +69,18 @@ int analyse_css(char *file_dir, style_list *style_list)
         unsigned i = 0;
         while(output[i] != '\0')
         {
+            //I think it would be a good idea to make factory methods here for producing a certain type.
+            //Or maybe send to method that can iterate entirely over reference to style and then return int with where we finished?
+            //I think that is potentially the best idea!
             i++;
             switch (css_section)
             {
                 case DEC_TYPE:
                 if (output[i] == '#')
                 {
-
+                    style id;
+                    id.name = "test\0";
+                    printf("%s", id.name);
                 }
                 else if (output[i] == '.')
                 {
