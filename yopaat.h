@@ -3,6 +3,7 @@
 #define	ERR_NULL (-1)
 #define ERR_INCORRECT_FILE (-2)
 #define ERR_NO_FILE (-3)
+#define ERR_UNEXPECTED_SYNTAX (-4)
 
 #include <stdbool.h>
 #include <argp.h>
@@ -10,6 +11,7 @@
 #include <gumbo.h>
 #include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
 #include <sys/queue.h>
 
 const char *argp_program_version = "yopaat 0.1.4-a";
@@ -27,25 +29,21 @@ struct arguments
     char *args[2];
 };
 
-typedef struct element
+typedef struct style
 {
     char *name;
-    LIST_ENTRY(element) pointer;
+    enum { ELEMENT, ID, CLASS } declaration_type;
+    LIST_ENTRY(style) pointer;
     char *styles[];
-} element;
-typedef struct id
+} style;
+
+typedef struct style_list
 {
-    char *name;
-    LIST_ENTRY(id) pointer;
-    char *styles[];
-} id;
-typedef struct class
-{
-    char *name;
-    LIST_ENTRY(class) pointer;
-    char *styles[];
-} class;
-enum { SELECTOR, DECLARATION } css_section;
+    style style;
+    LIST_ENTRY(style_list) pointer;
+} style_list;
+
+enum { DEC_TYPE, SELECTOR, DECLARATION } css_section;
 
 int main(int argc, char* argv[]);
 static error_t parse_opt(int key, char *arg, struct argp_state *state);

@@ -62,26 +62,40 @@ int analyse_css(char *file_dir)
     }
 
     FILE* css_file = open_file(file_dir);
-    char * output = read_file(css_file);
-    free(output);
-    /*int c;
-    css_section = SELECTOR;
-    if (css_file)
+    char * output = read_file(css_file); //MALLOC RETURN HERE, REMEMBER TO FREE
+    css_section = DEC_TYPE;
+    if (output)
     {
-        while ((c = getc(css_file)) != EOF)
+        for (unsigned i = 0; output[i] != '\0'; i++)
         {
             switch (css_section)
             {
+                case DEC_TYPE:
+                if (output[i] == '#')
+                {
+
+                }
+                else if (output[i] == '.')
+                {
+
+                }
+                else if (isalnum(output[i]) != 0)
+                {
+
+                }
+                else
+                {
+                    return ERR_UNEXPECTED_SYNTAX;
+                }
+                break;
                 case SELECTOR:
-                printf("BRACKET FOUND");
                 break;
                 case DECLARATION:
                 break;
             }
-            putchar(c);
         }
-        fclose(css_file);
-    }*/
+    }
+    free(output);
     return 0;
 }
 
