@@ -66,8 +66,10 @@ int analyse_css(char *file_dir, style_list *style_list)
     css_section = DEC_TYPE;
     if (output)
     {
-        for (unsigned i = 0; output[i] != '\0'; i++)
+        unsigned i = 0;
+        while(output[i] != '\0')
         {
+            i++;
             switch (css_section)
             {
                 case DEC_TYPE:
