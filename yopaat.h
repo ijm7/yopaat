@@ -1,5 +1,5 @@
-#ifndef PARSER_H
-#define PARSER_H
+#ifndef YOPAAT_H
+#define YOPAAT_H
 #define	ERR_NULL (-1)
 #define ERR_INCORRECT_FILE (-2)
 #define ERR_NO_FILE (-3)
