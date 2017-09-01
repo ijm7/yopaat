@@ -5,8 +5,9 @@ static struct argp argp = { options, parse_opt, args_doc, doc, 0, 0, 0 };
 int main(int argc, char* argv[])
 {
     struct arguments arguments;
+    style_list style_list;
     argp_parse(&argp, argc, argv, 0, 0, &arguments);
-    analyse_css(arguments.args[0]);
+    analyse_css(arguments.args[0], &style_list);
     //printf ("ARG1 = %s\nARG2 = %s\n", arguments.args[0], arguments.args[1]);
     return 0;
 }
@@ -47,7 +48,7 @@ int close_file(FILE *file)
     return fclose(file);
 }
 
-int analyse_css(char *file_dir)
+int analyse_css(char *file_dir, style_list *style_list)
 {
     // Check if the file is of type CSS.
     if (strlen(file_dir) < 5 || strcmp(&(file_dir[strlen(file_dir) - 4]), ".css") != 0)
@@ -60,7 +61,6 @@ int analyse_css(char *file_dir)
         printf("CSS file found!\n");
         printf("Analysing...\n");
     }
-
     FILE* css_file = open_file(file_dir);
     char * output = read_file(css_file); //MALLOC RETURN HERE, REMEMBER TO FREE
     css_section = DEC_TYPE;

@@ -34,6 +34,7 @@ typedef struct style
     char *name;
     enum { ELEMENT, ID, CLASS } declaration_type;
     LIST_ENTRY(style) pointer;
+
     char *styles[];
 } style;
 
@@ -50,7 +51,7 @@ static error_t parse_opt(int key, char *arg, struct argp_state *state);
 int validate_args(struct arguments *arguments);
 FILE* open_file(char *file_dir);
 int close_file(FILE *file);
-int analyse_css(char *file_dir);
+int analyse_css(char *file_dir, style_list *style_list);
 char* read_file(FILE *file);
 void append(char* s, char c);
 
