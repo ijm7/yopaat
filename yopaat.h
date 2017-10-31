@@ -8,7 +8,6 @@
 #include <stdbool.h>
 #include <argp.h>
 #include <stdio.h>
-#include <gumbo.h>
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
